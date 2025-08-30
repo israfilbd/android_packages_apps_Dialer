@@ -24,6 +24,8 @@
     <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowLightNavigationBar">true</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:colorPrimary">@color/dialer_primary_color</item>
+    <item name="colorPrimary">@color/dialer_primary_color</item>
     <item name="android:colorPrimaryDark">@color/dialer_theme_color_dark</item>
     <item name="colorPrimaryDark">@color/dialer_theme_color_dark</item>
     <item name="dialpad_style">@style/InCallDialpad</item>
