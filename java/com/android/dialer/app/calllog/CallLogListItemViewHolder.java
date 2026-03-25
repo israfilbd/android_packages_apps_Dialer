@@ -742,17 +742,19 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
     TimeInterpolator interpolator;
     int targetVisibility;
     float targetElevation;
+    int collapsedCardColor = res.getColor(R.color.cardBackgroundColor, context.getTheme());
+    int expandedCardColor = res.getColor(R.color.cardBackgroundColorExpanded, context.getTheme());
     if (shouldExpand) {
       targetHeight = currentHeight + additionalHeight;
-      colorFrom = res.getColor(android.R.color.transparent, context.getTheme());
-      colorTo  = res.getColor(R.color.cardBackgroundColor, context.getTheme());
+      colorFrom = collapsedCardColor;
+      colorTo = expandedCardColor;
       interpolator = new AccelerateDecelerateInterpolator();
       targetVisibility = View.VISIBLE;
-      targetElevation = 4f;
+      targetElevation = 2f;
     } else {
       targetHeight = currentHeight - additionalHeight;
-      colorFrom  = res.getColor(R.color.cardBackgroundColor, context.getTheme());
-      colorTo = res.getColor(android.R.color.transparent, context.getTheme());
+      colorFrom = expandedCardColor;
+      colorTo = collapsedCardColor;
       interpolator = new DecelerateInterpolator();
       targetVisibility = View.GONE;
       targetElevation = 0f;

@@ -185,7 +185,10 @@ final class BottomNavItem extends LinearLayout {
       // Animate the alpha of the indicator over the first ALPHA_FRACTION of the animation
       float startAlphaFraction = targetValue == 0F ? 1F - ALPHA_FRACTION : 0F;
       float endAlphaFraction = targetValue == 0F ? 1F : 0F + ALPHA_FRACTION;
-      return MathUtil.lerp(0F, 1F, progress);
+      float alphaProgress =
+          MathUtil.clamp(
+              (progress - startAlphaFraction) / (endAlphaFraction - startAlphaFraction), 0F, 1F);
+      return MathUtil.lerp(0F, 1F, alphaProgress);
     }
 
     protected float calculateScaleX(
