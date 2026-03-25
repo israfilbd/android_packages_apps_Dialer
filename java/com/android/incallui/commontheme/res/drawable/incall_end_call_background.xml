@@ -3,7 +3,8 @@
   android:color="#80FFFFFF">
   <item>
     <shape
-      android:shape="oval">
+      android:shape="rectangle">
+      <corners android:radius="999dp"/>
       <solid android:color="@color/dialer_end_call_button_color"/>
     </shape>
   </item>
