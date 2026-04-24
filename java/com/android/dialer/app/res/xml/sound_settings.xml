@@ -82,6 +82,16 @@
         android:title="@string/call_recording_category_title"
         app:iconSpaceReserved="false">
 
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="@string/auto_call_recording_key"
+            android:title="@string/auto_call_recording_title" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="@string/auto_call_recording_unknown_numbers_key"
+            android:title="@string/auto_call_recording_unknown_numbers_title" />
+
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/call_recording_encoder_entries"

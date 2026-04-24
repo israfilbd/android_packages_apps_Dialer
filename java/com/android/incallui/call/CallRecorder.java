@@ -73,6 +73,10 @@ public class CallRecorder implements CallList.Listener {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
       CallRecorder.this.service = ICallRecorderService.Stub.asInterface(service);
+      DialerCall activeCall = CallList.getInstance().getActiveCall();
+      if (activeCall != null) {
+        checkAutoRecord(activeCall);
+      }
     }
 
     @Override
@@ -236,6 +240,10 @@ public class CallRecorder implements CallList.Listener {
         }
       }
     }
+
+    if (service != null && callList.getActiveCall() != null) {
+      checkAutoRecord(callList.getActiveCall());
+    }
   }
 
   @Override
@@ -297,6 +305,38 @@ public class CallRecorder implements CallList.Listener {
       handler.postDelayed(this, UPDATE_INTERVAL);
     }
   };
+
+  private void checkAutoRecord(DialerCall call) {
+    if (call == null || call.getState() != DialerCallState.ACTIVE || isRecording()) {
+      return;
+    }
+
+    if (!canRecordInCurrentCountry()) {
+      return;
+    }
+
+    final String prefName = context.getPackageName() + "_preferences";
+    final android.content.SharedPreferences prefs = context.createDeviceProtectedStorageContext()
+            .getSharedPreferences(prefName, Context.MODE_MULTI_PROCESS);
+
+    boolean autoRecordAll = prefs.getBoolean(context.getString(R.string.auto_call_recording_key), false);
+    boolean autoRecordUnknown = prefs.getBoolean(context.getString(R.string.auto_call_recording_unknown_numbers_key), false);
+
+    boolean shouldRecord = false;
+    if (autoRecordAll) {
+      shouldRecord = true;
+    } else if (autoRecordUnknown) {
+      com.android.incallui.ContactInfoCache.ContactCacheEntry cacheEntry =
+          com.android.incallui.ContactInfoCache.getInstance(context).getInfo(call.getId());
+      if (cacheEntry == null || !cacheEntry.isLocalContact()) {
+        shouldRecord = true;
+      }
+    }
+
+    if (shouldRecord) {
+      startRecording(call.getNumber(), System.currentTimeMillis());
+    }
+  }
 
   private void loadAllowedStates() {
     XmlResourceParser parser = context.getResources().getXml(R.xml.call_record_states);

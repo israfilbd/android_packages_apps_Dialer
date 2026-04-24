@@ -302,7 +302,7 @@ public class ContactInfoCache implements OnImageLoadCompleteListener {
     return name;
   }
 
-  ContactCacheEntry getInfo(String callId) {
+  public ContactCacheEntry getInfo(String callId) {
     return infoMap.get(callId);
   }
 

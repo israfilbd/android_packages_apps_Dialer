@@ -48,6 +48,7 @@ import androidx.preference.SwitchPreferenceCompat;
 import com.android.dialer.R;
 import com.android.dialer.callrecord.impl.CallRecorderService;
 import com.android.dialer.util.SettingsUtil;
+import com.android.incallui.call.CallRecorder;
 
 public class SoundSettingsFragment extends PreferenceFragmentCompat
     implements Preference.OnPreferenceChangeListener {
@@ -92,6 +93,8 @@ public class SoundSettingsFragment extends PreferenceFragmentCompat
   private SwitchPreferenceCompat playDtmfTone;
   private ListPreference dtmfToneLength;
   private SwitchPreferenceCompat enableDndInCall;
+  private SwitchPreferenceCompat autoCallRecording;
+  private SwitchPreferenceCompat autoCallRecordingUnknownNumbers;
 
   private NotificationManager notificationManager;
 
@@ -158,9 +161,17 @@ public class SoundSettingsFragment extends PreferenceFragmentCompat
       getPreferenceScreen().removePreference(dtmfToneLength);
       dtmfToneLength = null;
     }
-    if (!CallRecorderService.isEnabled(getActivity())) {
+    CallRecorder.getInstance().setUp(context.getApplicationContext());
+    if (!CallRecorder.getInstance().canRecordInCurrentCountry()) {
       getPreferenceScreen().removePreference(
               findPreference(context.getString(R.string.call_recording_category_key)));
+    } else {
+      autoCallRecording = findPreference(context.getString(R.string.auto_call_recording_key));
+      autoCallRecordingUnknownNumbers = findPreference(context.getString(R.string.auto_call_recording_unknown_numbers_key));
+      if (autoCallRecording != null && autoCallRecordingUnknownNumbers != null) {
+        autoCallRecording.setOnPreferenceChangeListener(this);
+        autoCallRecordingUnknownNumbers.setVisible(!autoCallRecording.isChecked());
+      }
     }
     notificationManager = context.getSystemService(NotificationManager.class);
   }
@@ -226,6 +237,11 @@ public class SoundSettingsFragment extends PreferenceFragmentCompat
 
         // At this time, it is unknown whether the user granted the permission
         return false;
+      }
+    } else if (preference == autoCallRecording) {
+      boolean doAutoRecord = (Boolean) objValue;
+      if (autoCallRecordingUnknownNumbers != null) {
+        autoCallRecordingUnknownNumbers.setVisible(!doAutoRecord);
       }
     }
     return true;
