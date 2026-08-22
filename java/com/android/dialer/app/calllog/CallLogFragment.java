@@ -294,6 +294,11 @@ public class CallLogFragment extends Fragment
     return view;
   }
 
+  private TextView filterChipAll;
+  private TextView filterChipMissed;
+  private TextView filterChipIncoming;
+  private TextView filterChipOutgoing;
+
   protected void setupView(View view) {
     recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
     recyclerView.setHasFixedSize(true);
@@ -312,6 +317,41 @@ public class CallLogFragment extends Fragment
     multiSelectUnSelectAllViewContent.setOnClickListener(null);
     selectUnselectAllIcon.setOnClickListener(this);
     selectUnselectAllViewText.setOnClickListener(this);
+
+    filterChipAll = (TextView) view.findViewById(R.id.filter_chip_all);
+    filterChipMissed = (TextView) view.findViewById(R.id.filter_chip_missed);
+    filterChipIncoming = (TextView) view.findViewById(R.id.filter_chip_incoming);
+    filterChipOutgoing = (TextView) view.findViewById(R.id.filter_chip_outgoing);
+
+    if (filterChipAll != null) {
+      filterChipAll.setOnClickListener(v -> selectFilter(CallLogQueryHandler.CALL_TYPE_ALL));
+      filterChipMissed.setOnClickListener(v -> selectFilter(Calls.MISSED_TYPE));
+      filterChipIncoming.setOnClickListener(v -> selectFilter(Calls.INCOMING_TYPE));
+      filterChipOutgoing.setOnClickListener(v -> selectFilter(Calls.OUTGOING_TYPE));
+      updateFilterChipStyles();
+    }
+  }
+
+  private void selectFilter(int filterType) {
+    if (callTypeFilter == filterType) {
+      return;
+    }
+    callTypeFilter = filterType;
+    updateFilterChipStyles();
+    fetchCalls();
+  }
+
+  private void updateFilterChipStyles() {
+    if (filterChipAll == null || getContext() == null) {
+      return;
+    }
+    int selectedBg = R.drawable.filter_chip_background_selected;
+    int unselectedBg = R.drawable.filter_chip_background_unselected;
+
+    filterChipAll.setBackgroundResource(callTypeFilter == CallLogQueryHandler.CALL_TYPE_ALL ? selectedBg : unselectedBg);
+    filterChipMissed.setBackgroundResource(callTypeFilter == Calls.MISSED_TYPE ? selectedBg : unselectedBg);
+    filterChipIncoming.setBackgroundResource(callTypeFilter == Calls.INCOMING_TYPE ? selectedBg : unselectedBg);
+    filterChipOutgoing.setBackgroundResource(callTypeFilter == Calls.OUTGOING_TYPE ? selectedBg : unselectedBg);
   }
 
   protected void setupData() {
@@ -696,6 +736,19 @@ public class CallLogFragment extends Fragment
       selectUnselectAllIcon.setImageDrawable(AppCompatResources.getDrawable(requireContext(),
               R.drawable.ic_empty_check_mark_white_24dp));
       getAdapter().onAllDeselected();
+    }
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    filterChipAll = null;
+    filterChipMissed = null;
+    filterChipIncoming = null;
+    filterChipOutgoing = null;
+    if (recyclerView != null) {
+      recyclerView.setAdapter(null);
+      recyclerView = null;
     }
   }
 

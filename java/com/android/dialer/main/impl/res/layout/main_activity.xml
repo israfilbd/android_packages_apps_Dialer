@@ -32,7 +32,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_below="@+id/toolbar"
-      android:layout_above="@+id/bottom_nav_bar">
+      android:layout_alignParentBottom="true">
 
     <!-- Holds SpeedDial, Call Log, Contacts, Voicemail and Search fragments -->
     <FrameLayout
@@ -49,14 +49,15 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="92dp"
         android:layout_gravity="end|bottom"
         android:forceDarkAllowed="false"
         android:src="@drawable/quantum_ic_dialpad_vd_theme_24"
-        android:tint="@color/dialer_fab_icon_color"
-        app:tint="@color/dialer_fab_icon_color"
+        app:tint="?android:attr/textColorPrimary"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Dialer.FAB"
         android:contentDescription="@string/dialpad_button_content_description"
-        app:backgroundTint="@color/dialer_theme_color_light"/>
+        app:backgroundTint="@color/dialer_pill_color"/>
 
     <include android:id="@+id/promotion_bottom_sheet"
         layout="@layout/promotion_bottom_sheet"/>
@@ -68,6 +69,9 @@
       layout="@layout/bottom_nav_bar_layout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginEnd="24dp"
+      android:layout_marginBottom="16dp"
       android:layout_alignParentBottom="true"/>
 
   <!-- Holds Dialpad fragment -->

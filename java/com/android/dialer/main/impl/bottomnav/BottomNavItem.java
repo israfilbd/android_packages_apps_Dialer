@@ -66,22 +66,30 @@ final class BottomNavItem extends LinearLayout {
   protected void onFinishInflate() {
     super.onFinishInflate();
     activeIndicatorView = findViewById(R.id.active_indicator);
-    activeIndicatorView.setBackgroundResource(R.drawable.pill);
+    if (activeIndicatorView != null) {
+      activeIndicatorView.setBackgroundResource(R.drawable.pill);
+    }
     image = findViewById(R.id.bottom_nav_item_image);
     text = findViewById(R.id.bottom_nav_item_text);
     notificationBadge = findViewById(R.id.notification_badge);
     initialized = true;
+    setSelected(isSelected());
   }
 
   @Override
   public void setSelected(boolean selected) {
     super.setSelected(selected);
+    if (!initialized || image == null || text == null) {
+      return;
+    }
     int colorId = selected
             ? DialerUtils.resolveColor(getContext(), android.R.attr.textColorPrimary)
             : DialerUtils.resolveColor(getContext(), android.R.attr.textColorSecondary);
     image.setImageResource(selected ? drawableResSelected : drawableRes);
     image.setImageTintList(ColorStateList.valueOf(colorId));
     text.setTextColor(colorId);
+    text.setFontVariationSettings(selected ? "'wght' 700, 'wdth' 100" : "'wght' 500, 'wdth' 100");
+    text.setVisibility(selected ? View.VISIBLE : View.GONE);
 
     float newIndicatorProgress = selected ? 1F : 0F;
     maybeAnimateActiveIndicatorToProgress(newIndicatorProgress);
@@ -123,8 +131,12 @@ final class BottomNavItem extends LinearLayout {
              @DrawableRes int drawableResSelected) {
     this.drawableRes = drawableRes;
     this.drawableResSelected = drawableResSelected;
-    text.setText(stringRes);
-    image.setImageResource(drawableRes);
+    if (text != null) {
+      text.setText(stringRes);
+    }
+    if (image != null) {
+      image.setImageResource(isSelected() ? drawableResSelected : drawableRes);
+    }
   }
 
   void setNotificationCount(int count) {

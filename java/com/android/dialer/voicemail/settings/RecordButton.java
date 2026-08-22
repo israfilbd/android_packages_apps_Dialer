@@ -150,13 +150,13 @@ public class RecordButton extends AppCompatButton {
         currentCenterDrawable = readyDrawable;
         break;
       case RecordVoicemailGreetingActivity.RECORD_GREETING_PLAYING_BACK:
-        mainTrackPaint = getBasePaint(R.color.google_blue_500);
-        secondaryTrackPaint = getBasePaint(R.color.google_blue_50);
+        mainTrackPaint = getBasePaint(android.R.color.system_accent2_600);
+        secondaryTrackPaint = getBasePaint(android.R.color.system_accent2_100);
         currentCenterDrawable = playingDrawable;
         break;
       case RecordVoicemailGreetingActivity.RECORD_GREETING_RECORDED:
-        mainTrackPaint = getBasePaint(R.color.google_blue_500);
-        secondaryTrackPaint = getBasePaint(R.color.google_blue_50);
+        mainTrackPaint = getBasePaint(android.R.color.system_accent2_600);
+        secondaryTrackPaint = getBasePaint(android.R.color.system_accent2_100);
         currentCenterDrawable = recordedDrawable;
         break;
       case RecordVoicemailGreetingActivity.RECORD_GREETING_RECORDING:

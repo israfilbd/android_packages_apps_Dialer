@@ -15,43 +15,34 @@
   ~ limitations under the License
   -->
 <resources>
-  <style name="Dialer.Dark.ThemeBase.NoActionBar">
-    <!-- Copied from Theme.AppCompat.Light.NoActionBar. We can remove this and update the Dialer
-        base style once none of our activities depend on ActionBar anymore. -->
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-  </style>
-
-  <!-- Activities and Applications should inherit from one of the themes above. -->
-  <style name="Dialer.Dark.ThemeBase">
-    <!-- These values should be used to color all backgrounds. -->
-    <item name="android:colorBackground">@android:color/system_neutral1_900</item>
-    <item name="android:colorBackgroundFloating">@android:color/system_neutral1_800</item>
-
-    <!-- These values should be used to set text color. -->
-    <!-- swap text colors. -->
-    <item name="android:textColorPrimary">@color/dialer_dark_primary_text_color</item>
-    <item name="android:textColorSecondary">@color/dialer_dark_secondary_text_color</item>
-    <item name="android:textColorPrimaryInverse">@color/dialer_primary_text_color</item>
-    <item name="android:textColorSecondaryInverse">@color/dialer_secondary_text_color</item>
-    <item name="android:textColorHint">@color/google_grey_600</item>
-
-    <!-- These will be automatically used to color most Appcompat/Material widgets. -->
-    <item name="android:colorPrimary">@color/dialer_dark_theme_color</item>
-    <item name="colorPrimary">@color/dialer_dark_theme_color</item>
-    <item name="android:colorPrimaryDark">@color/dialer_dark_theme_color_dark</item>
-    <item name="colorPrimaryDark">@color/dialer_dark_theme_color_dark</item>
-    <item name="android:colorAccent">@color/dialer_dark_theme_color</item>
-    <item name="colorAccent">@color/dialer_dark_theme_color</item>
-
-    <!-- Used to automatically style check/selected checkbox, switches and radio buttons -->
-    <item name="colorControlActivated">?android:attr/colorAccent</item>
+  <style name="Dialer.Dark.ThemeBase" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowLightNavigationBar">false</item>
+    <item name="colorBackgroundSearchBar">?attr/colorSurfaceContainerHigh</item>
+    <item name="colorPrimary">@android:color/system_accent2_200</item>
+    <item name="colorPrimaryContainer">@android:color/system_accent2_700</item>
+    <item name="colorSecondaryContainer">@android:color/system_accent2_700</item>
+    <item name="colorOnPrimaryContainer">@android:color/system_accent2_100</item>
+    <item name="colorOnSecondaryContainer">@android:color/system_accent2_100</item>
 
     <!-- Dialer specific attributes. -->
     <item name="colorIcon">?android:attr/textColorSecondary</item>
     <item name="colorIconSecondary">?android:attr/textColorSecondary</item>
-    <item name="colorTextOnUnthemedDarkBackground">@android:color/system_neutral1_0</item>
-    <item name="colorIconOnUnthemedDarkBackground">@android:color/system_neutral1_0</item>
+    <item name="colorTextOnUnthemedDarkBackground">#FFFFFF</item>
+    <item name="colorIconOnUnthemedDarkBackground">#FFFFFF</item>
     <item name="colorCallNotificationBackground">@android:color/system_accent2_700</item>
+    <item name="colorControlHighlight">@android:color/system_accent2_700</item>
+    <item name="android:colorControlHighlight">@android:color/system_accent2_700</item>
+    <item name="popupMenuStyle">@style/Dialer.M3.PopupMenu</item>
+    <item name="actionOverflowMenuStyle">@style/Dialer.M3.OverflowMenu</item>
+    <item name="android:popupElevation">6dp</item>
+  </style>
+
+  <style name="Dialer.Dark.ThemeBase.NoActionBar" parent="Dialer.Dark.ThemeBase">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
   </style>
 </resources>

@@ -697,6 +697,10 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
    * <p>If the action views have never been shown yet for this view, inflate the view stub.
    */
   public void showActions(boolean show) {
+    showActions(show, true);
+  }
+
+  public void showActions(boolean show, boolean animate) {
     if (show) {
       if (!isLoaded) {
         // a bug for some unidentified reason showActions() can be called before the item is
@@ -709,20 +713,40 @@ public final class CallLogListItemViewHolder extends RecyclerView.ViewHolder
         return;
       }
 
-      TransitionManager.beginDelayedTransition((ViewGroup) rootView);
-      // Inflate the view stub if necessary, and wire up the event handlers.
       inflateActionViewStub();
       bindActionButtons();
-      animateActions(true);
-      TransitionManager.endTransitions((ViewGroup) rootView);
-    } else {
-      TransitionManager.beginDelayedTransition((ViewGroup) rootView);
-      // When recycling a view, it is possible the actionsView ViewStub was previously
-      // inflated so we should hide it in this case.
-      if (actionsView != null) {
-        animateActions(false);
+
+      if (animate) {
+        TransitionManager.beginDelayedTransition((ViewGroup) rootView);
+        animateActions(true);
+        TransitionManager.endTransitions((ViewGroup) rootView);
+      } else {
+        if (actionsView != null) {
+          actionsView.setVisibility(View.VISIBLE);
+        }
+        int expandedCardColor = context.getResources().getColor(R.color.cardBackgroundColorExpanded, context.getTheme());
+        callLogEntryView.setCardBackgroundColor(expandedCardColor);
+        callLogEntryView.setCardElevation(2f);
+        ViewGroup.LayoutParams params = callLogEntryView.getLayoutParams();
+        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        callLogEntryView.setLayoutParams(params);
       }
-      TransitionManager.endTransitions((ViewGroup) rootView);
+    } else {
+      if (actionsView != null) {
+        if (animate) {
+          TransitionManager.beginDelayedTransition((ViewGroup) rootView);
+          animateActions(false);
+          TransitionManager.endTransitions((ViewGroup) rootView);
+        } else {
+          actionsView.setVisibility(View.GONE);
+          int collapsedCardColor = context.getResources().getColor(R.color.cardBackgroundColor, context.getTheme());
+          callLogEntryView.setCardBackgroundColor(collapsedCardColor);
+          callLogEntryView.setCardElevation(0f);
+          ViewGroup.LayoutParams params = callLogEntryView.getLayoutParams();
+          params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+          callLogEntryView.setLayoutParams(params);
+        }
+      }
     }
     updatePrimaryActionButton(show);
   }

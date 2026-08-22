@@ -16,49 +16,56 @@
   -->
 <resources>
   <!--
-   - These are official UX approved text styles and all TextViews should inherit from one of these.
-   - If you think you don't see the style you need, double check with your UX designer.
+   - These are official M3E approved text styles utilizing native system font variations.
    -->
-  <style name="Dialer.TextAppearance.Header1" parent="TextAppearance.AppCompat">
+  <style name="Dialer.TextAppearance.Header1" parent="TextAppearance.Material3.TitleLarge">
     <item name="android:textColor">?android:attr/textColorPrimary</item>
-    <item name="android:textSize">18sp</item>
-    <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    <item name="android:fontVariationSettings">\'wght\' 700, \'wdth\' 100</item>
   </style>
 
-  <style name="Dialer.TextAppearance.Header2" parent="TextAppearance.AppCompat">
+  <style name="Dialer.TextAppearance.Header2" parent="TextAppearance.Material3.TitleMedium">
     <item name="android:textColor">?android:attr/textColorPrimary</item>
     <item name="android:textSize">16sp</item>
     <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    <item name="android:fontVariationSettings">\'wght\' 600, \'wdth\' 100</item>
   </style>
 
-  <style name="Dialer.TextAppearance.SubHeader" parent="TextAppearance.AppCompat">
-    <item name="android:textColor">?android:attr/textColorPrimary</item>
-    <item name="android:textSize">16sp</item>
-    <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
-  </style>
-
-  <style name="Dialer.TextAppearance.Primary" parent="TextAppearance.AppCompat">
-    <item name="android:textColor">?android:attr/textColorPrimary</item>
-    <item name="android:textSize">16sp</item>
-    <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
-  </style>
-
-  <style name="Dialer.TextAppearance.Secondary" parent="TextAppearance.AppCompat">
+  <style name="Dialer.TextAppearance.SubHeader" parent="TextAppearance.Material3.TitleSmall">
     <item name="android:textColor">?android:attr/textColorSecondary</item>
     <item name="android:textSize">14sp</item>
     <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:fontVariationSettings">\'wght\' 500, \'wdth\' 100</item>
   </style>
 
-  <style name="Dialer.TextAppearance.Secondary2" parent="TextAppearance.AppCompat">
+  <style name="Dialer.TextAppearance.Primary" parent="TextAppearance.Material3.BodyLarge">
+    <item name="android:textColor">?android:attr/textColorPrimary</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:fontVariationSettings">\'wght\' 450, \'wdth\' 100</item>
+  </style>
+
+  <style name="Dialer.TextAppearance.Secondary" parent="TextAppearance.Material3.BodyMedium">
+    <item name="android:textColor">?android:attr/textColorSecondary</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:fontVariationSettings">\'wght\' 400, \'wdth\' 100</item>
+  </style>
+
+  <style name="Dialer.TextAppearance.Secondary2" parent="TextAppearance.Material3.BodySmall">
     <item name="android:textColor">?android:attr/textColorSecondary</item>
     <item name="android:textSize">12sp</item>
     <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:fontVariationSettings">\'wght\' 400, \'wdth\' 100</item>
   </style>
 
-  <style name="Dialer.TextAppearance.OVERLINE" parent="TextAppearance.AppCompat">
+  <style name="Dialer.TextAppearance.OVERLINE" parent="TextAppearance.Material3.LabelMedium">
     <item name="android:textColor">?android:attr/textColorSecondary</item>
-    <item name="android:textSize">14sp</item>
+    <item name="android:textSize">12sp</item>
     <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    <item name="android:fontVariationSettings">\'wght\' 600, \'wdth\' 100</item>
+    <item name="android:letterSpacing">0.05</item>
   </style>
 
   <style name="Dialer.TextAppearance.Header1.Ellipsize">

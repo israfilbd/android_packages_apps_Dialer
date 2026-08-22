@@ -39,6 +39,7 @@ import com.android.dialer.phonenumbercache.PhoneNumberCache;
 import com.android.dialer.phonenumberutil.PhoneNumberHelper;
 import com.android.dialer.theme.base.ThemeComponent;
 import com.android.dialer.util.DialerUtils;
+import com.android.dialer.util.DialerUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -168,8 +169,8 @@ public class PhoneCallDetailsHelper {
     views.callLocationAndDate.setTypeface(typeface);
     views.callLocationAndDate.setTextColor(
         details.isRead
-            ? ThemeComponent.get(context).theme().getTextColorSecondary()
-            : ThemeComponent.get(context).theme().getTextColorPrimary());
+            ? DialerUtils.resolveColor(context, android.R.attr.textColorSecondary)
+            : DialerUtils.resolveColor(context, android.R.attr.textColorPrimary));
   }
 
   private void setNameView(PhoneCallDetailsViews views, PhoneCallDetails details) {

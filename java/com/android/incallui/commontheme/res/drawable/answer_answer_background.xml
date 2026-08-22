@@ -4,7 +4,7 @@
   <item>
     <shape
       android:shape="oval">
-      <solid android:color="@color/dialer_call_green"/>
+      <solid android:color="@color/notification_action_accept"/>
     </shape>
   </item>
 </ripple>

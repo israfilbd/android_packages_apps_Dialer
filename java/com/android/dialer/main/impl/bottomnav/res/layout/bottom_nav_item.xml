@@ -20,8 +20,10 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:minWidth="80dp"
-    android:minHeight="56dp"
+    android:minWidth="64dp"
+    android:minHeight="48dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
     android:gravity="center">
 
   <FrameLayout
@@ -31,25 +33,25 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp">
 
-    <View
-        android:id="@+id/active_indicator"
-        android:layout_width="64dp"
-        android:layout_height="32dp"
-        android:background="@drawable/pill"
-        android:gravity="center"
-        android:visibility="visible"/>
+      <View
+          android:id="@+id/active_indicator"
+          android:layout_width="56dp"
+          android:layout_height="30dp"
+          android:background="@drawable/pill"
+          android:gravity="center"
+          android:visibility="visible"/>
 
-    <ImageView
-        android:id="@+id/bottom_nav_item_image"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_gravity="center"
-        tools:src="@drawable/quantum_ic_star_vd_theme_24"/>
+      <ImageView
+          android:id="@+id/bottom_nav_item_image"
+          android:layout_width="22dp"
+          android:layout_height="22dp"
+          android:layout_marginTop="4dp"
+          android:layout_marginBottom="4dp"
+          android:layout_gravity="center"
+          tools:src="@drawable/quantum_ic_star_vd_theme_24"/>
     </FrameLayout>
 
     <TextView
@@ -57,14 +59,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_marginTop="2dp"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
+        android:layout_marginTop="0dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:paddingBottom="1dp"
-        android:minHeight="20dp"
-        android:minWidth="20dp"
+        android:minHeight="18dp"
+        android:minWidth="18dp"
         android:gravity="center"
-        android:textSize="12sp"
+        android:textSize="11sp"
         android:textColor="?android:attr/textColorPrimaryInverse"
         android:background="@drawable/notification_badge"
         android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
@@ -75,9 +77,11 @@
       android:id="@+id/bottom_nav_item_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="16dp"
+      android:layout_marginTop="2dp"
+      android:layout_marginBottom="2dp"
       android:gravity="center_horizontal"
-      android:textSize="12sp"
+      android:textSize="11sp"
       style="@style/Dialer.TextAppearance.OVERLINE"
-      android:textColor="?android:attr/textColorPrimary"/>
+      android:textColor="?android:attr/textColorPrimary"
+      android:visibility="gone"/>
 </com.android.dialer.main.impl.bottomnav.BottomNavItem>

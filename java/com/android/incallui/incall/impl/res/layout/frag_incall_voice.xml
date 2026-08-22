@@ -33,7 +33,7 @@
         android:id="@id/incall_contact_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -88,7 +88,7 @@
         android:id="@+id/incall_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/incall_paginator"
+        android:layout_above="@+id/incall_end_call"
         android:layout_below="@+id/incall_contact_grid"
         android:layout_centerHorizontal="true"/>
 
@@ -113,10 +113,10 @@
     <ImageButton
         android:id="@+id/incall_end_call"
         style="@style/Incall.Button.End"
-        android:layout_width="160dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="104dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/incall_content_description_end_call"/>

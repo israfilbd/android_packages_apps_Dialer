@@ -16,9 +16,10 @@
  -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/row_height">
+    android:layout_height="wrap_content"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp">
 
   <include layout="@layout/header"/>
 
@@ -26,14 +27,13 @@
       android:id="@+id/click_target"
       android:orientation="horizontal"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="56dp"
       android:layout_marginStart="@dimen/header_width"
-      android:layout_marginEnd="@dimen/row_end_margin"
-      android:paddingTop="@dimen/row_top_bottom_padding"
-      android:paddingBottom="@dimen/row_top_bottom_padding"
-      android:paddingStart="@dimen/row_start_padding"
+      android:layout_marginEnd="12dp"
+      android:paddingStart="12dp"
+      android:paddingEnd="16dp"
       android:gravity="center_vertical"
-      android:background="?android:attr/selectableItemBackground">
+      android:background="@drawable/contact_row_card_background">
 
     <QuickContactBadge
         android:id="@+id/photo"
@@ -53,6 +53,7 @@
         android:gravity="center_vertical"
         android:textSize="@dimen/text_size"
         android:textColor="?android:attr/textColorPrimary"
-        android:fontFamily="@*android:string/config_bodyFontFamily"/>
+        android:fontFamily="@*android:string/config_bodyFontFamily"
+        android:fontVariationSettings="\'wght\' 500, \'wdth\' 100"/>
   </LinearLayout>
 </FrameLayout>

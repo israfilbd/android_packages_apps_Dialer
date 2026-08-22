@@ -38,12 +38,9 @@ public class AnswerMethodFactory {
   }
 
   public static boolean needsReplacement(@Nullable Fragment answerMethod) {
-    //noinspection SimplifiableIfStatement
     if (answerMethod == null) {
       return true;
     }
-    // If we have already started showing TwoButtonMethod, we should keep showing TwoButtonMethod.
-    // Otherwise check if we need to change to TwoButtonMethod
     return !(answerMethod instanceof TwoButtonMethod) && needTwoButton(answerMethod.getActivity());
   }
 

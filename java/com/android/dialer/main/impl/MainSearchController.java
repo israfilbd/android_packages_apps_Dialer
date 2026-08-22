@@ -462,9 +462,6 @@ public class MainSearchController implements SearchBarListener {
     } else if (menuItem.getItemId() == R.id.clear_frequents) {
       ClearFrequentsDialog.show(activity.getSupportFragmentManager());
       return true;
-    } else if (menuItem.getItemId() == R.id.menu_call_history) {
-      final Intent intent = new Intent(activity, CallLogActivity.class);
-      activity.startActivity(intent);
     } else if (menuItem.getItemId() == R.id.menu_helplines) {
       activity.startActivity(new Intent(activity, HelplineActivity.class));
     }

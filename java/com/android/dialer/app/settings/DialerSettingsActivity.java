@@ -98,7 +98,29 @@ public class DialerSettingsActivity extends BaseActivity implements
       }
     });
 
-    setupInsets(findViewById(R.id.main_layout));
+    com.google.android.material.appbar.MaterialToolbar toolbar = findViewById(R.id.settings_toolbar);
+    if (toolbar != null) {
+      setSupportActionBar(toolbar);
+    }
+
+    androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setElevation(0);
+    }
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+    if (item.getItemId() == android.R.id.home) {
+      if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+        getSupportFragmentManager().popBackStack();
+        return true;
+      }
+      finish();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   @Override

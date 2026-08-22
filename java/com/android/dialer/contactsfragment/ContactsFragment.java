@@ -36,6 +36,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
@@ -171,6 +174,14 @@ public class ContactsFragment extends Fragment
     fastScroller = view.findViewById(R.id.fast_scroller);
     anchoredHeader = view.findViewById(R.id.header);
     recyclerView = view.findViewById(R.id.recycler_view);
+    recyclerView.setClipToPadding(false);
+    ViewCompat.setOnApplyWindowInsetsListener(
+        recyclerView,
+        (v, insets) -> {
+          Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+          v.setPadding(v.getPaddingLeft(), systemBars.top, v.getPaddingRight(), systemBars.bottom);
+          return insets;
+        });
     adapter =
         new ContactsAdapter(
             getContext(), header, FragmentUtils.getParent(this, OnContactSelectedListener.class));
@@ -244,9 +255,26 @@ public class ContactsFragment extends Fragment
 
   @Override
   public void onLoaderReset(Loader<Cursor> loader) {
-    recyclerView.setAdapter(null);
-    recyclerView.setOnScrollChangeListener(null);
+    if (recyclerView != null) {
+      recyclerView.setAdapter(null);
+      recyclerView.setOnScrollChangeListener(null);
+    }
     adapter = null;
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    if (recyclerView != null) {
+      recyclerView.setAdapter(null);
+      recyclerView.setOnScrollChangeListener(null);
+    }
+    fastScroller = null;
+    anchoredHeader = null;
+    recyclerView = null;
+    manager = null;
+    adapter = null;
+    emptyContentView = null;
   }
 
   /*

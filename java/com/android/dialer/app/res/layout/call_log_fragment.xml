@@ -52,6 +52,86 @@
         android:textSize="@dimen/select_all_text_size"/>
   </LinearLayout>
 
+  <HorizontalScrollView
+      android:id="@+id/call_log_filter_scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:scrollbars="none"
+      android:overScrollMode="never"
+      android:paddingStart="16dp"
+      android:paddingEnd="16dp"
+      android:paddingTop="8dp"
+      android:paddingBottom="8dp"
+      android:clipToPadding="false">
+
+    <LinearLayout
+        android:id="@+id/call_log_filter_chips_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+      <TextView
+          android:id="@+id/filter_chip_all"
+          android:layout_width="wrap_content"
+          android:layout_height="36dp"
+          android:paddingStart="16dp"
+          android:paddingEnd="16dp"
+          android:gravity="center"
+          android:layout_marginEnd="8dp"
+          android:background="@drawable/filter_chip_background_selected"
+          android:text="@string/call_log_all_title"
+          android:textColor="?android:attr/textColorPrimary"
+          android:textSize="14sp"
+          android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
+          android:fontVariationSettings="\'wght\' 600, \'wdth\' 100"/>
+
+      <TextView
+          android:id="@+id/filter_chip_missed"
+          android:layout_width="wrap_content"
+          android:layout_height="36dp"
+          android:paddingStart="16dp"
+          android:paddingEnd="16dp"
+          android:gravity="center"
+          android:layout_marginEnd="8dp"
+          android:background="@drawable/filter_chip_background_unselected"
+          android:text="@string/call_log_missed_title"
+          android:textColor="?android:attr/textColorPrimary"
+          android:textSize="14sp"
+          android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
+          android:fontVariationSettings="\'wght\' 500, \'wdth\' 100"/>
+
+      <TextView
+          android:id="@+id/filter_chip_incoming"
+          android:layout_width="wrap_content"
+          android:layout_height="36dp"
+          android:paddingStart="16dp"
+          android:paddingEnd="16dp"
+          android:gravity="center"
+          android:layout_marginEnd="8dp"
+          android:background="@drawable/filter_chip_background_unselected"
+          android:text="@string/call_log_incoming_header"
+          android:textColor="?android:attr/textColorPrimary"
+          android:textSize="14sp"
+          android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
+          android:fontVariationSettings="\'wght\' 500, \'wdth\' 100"/>
+
+      <TextView
+          android:id="@+id/filter_chip_outgoing"
+          android:layout_width="wrap_content"
+          android:layout_height="36dp"
+          android:paddingStart="16dp"
+          android:paddingEnd="16dp"
+          android:gravity="center"
+          android:background="@drawable/filter_chip_background_unselected"
+          android:text="@string/call_log_outgoing_header"
+          android:textColor="?android:attr/textColorPrimary"
+          android:textSize="14sp"
+          android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
+          android:fontVariationSettings="\'wght\' 500, \'wdth\' 100"/>
+    </LinearLayout>
+  </HorizontalScrollView>
+
   <FrameLayout
     android:id="@+id/modal_message_container"
     android:layout_width="match_parent"
@@ -61,7 +141,7 @@
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recycler_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/floating_action_button_list_bottom_padding"
     android:paddingStart="@dimen/call_log_horizontal_margin"
     android:paddingEnd="@dimen/call_log_horizontal_margin"

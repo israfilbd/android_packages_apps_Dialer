@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/search_bar_margin"
         android:background="@drawable/search_bar_background_rounded_corners"
-        android:elevation="0dp"
+        android:elevation="3dp"
         android:minHeight="@dimen/collapsed_search_bar_height">
 
       <RelativeLayout
@@ -50,7 +50,7 @@
             android:importantForAccessibility="no"
             android:scaleType="center"
             android:src="@drawable/quantum_ic_search_vd_theme_24"
-            app:tint="@color/searchbar_icon_color" />
+            app:tint="?android:attr/textColorSecondary" />
 
         <TextView
             android:id="@+id/search_box_start_search"
@@ -73,7 +73,7 @@
             android:contentDescription="@string/description_start_voice_search"
             android:scaleType="center"
             android:src="@drawable/quantum_ic_mic_vd_theme_24"
-            app:tint="@color/searchbar_icon_color" />
+            app:tint="?android:attr/textColorSecondary" />
 
         <ImageButton
             android:id="@+id/main_options_menu_button"
@@ -84,7 +84,7 @@
             android:contentDescription="@string/action_menu_overflow_description"
             android:scaleType="center"
             android:src="@drawable/quantum_ic_more_vert_vd_theme_24"
-            app:tint="@color/searchbar_icon_color" />
+            app:tint="?android:attr/textColorSecondary" />
       </RelativeLayout>
 
       <include layout="@layout/expanded_search_bar"/>

@@ -2,6 +2,8 @@
 <resources>
   <style name="Dialer.Incall.TextAppearance.Hint">
     <item name="android:textSize">14sp</item>
-    <item name="android:textStyle">italic</item>
+    <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    <item name="android:fontVariationSettings">\'wght\' 500, \'wdth\' 100</item>
+    <item name="android:textColor">?android:attr/textColorSecondary</item>
   </style>
 </resources>

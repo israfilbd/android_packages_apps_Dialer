@@ -129,7 +129,7 @@
               android:layout_height="wrap_content"
               android:layout_marginEnd="@dimen/call_log_icon_margin"
               android:layout_gravity="center_vertical"
-              style="Dialer.TextAppearance.Secondary.Ellipsize"/>
+              style="@style/Dialer.TextAppearance.Secondary.Ellipsize"/>
 
           </LinearLayout>
 
@@ -140,7 +140,7 @@
             android:layout_marginTop="@dimen/call_log_call_account_margin_bottom"
             android:layout_marginEnd="@dimen/call_log_icon_margin"
             android:visibility="gone"
-            style="Dialer.TextAppearance.Secondary2.Ellipsize"/>
+            style="@style/Dialer.TextAppearance.Secondary2.Ellipsize"/>
 
         </LinearLayout>
 
@@ -152,7 +152,7 @@
           android:background="?android:attr/selectableItemBackgroundBorderless"
           android:scaleType="center"
           android:visibility="gone"
-          app:tint="?colorIcon" />
+          app:tint="?android:attr/textColorSecondary" />
 
       </LinearLayout>
 

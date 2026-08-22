@@ -4,11 +4,15 @@
   SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-  <style name="Dialer.ThemeBase.ActionBar">
+  <style name="Dialer.ThemeBase.ActionBar" parent="Dialer.Dark.ThemeBase">
     <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowLightNavigationBar">false</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
   </style>
 
-  <style name="Dialer.ThemeBase.NoActionBar">
+  <style name="Dialer.ThemeBase.NoActionBar" parent="Dialer.Dark.ThemeBase.NoActionBar">
     <!-- Copied from Theme.AppCompat.Light.NoActionBar. We can remove this and update the Dialer
     base style once none of our activities depend on ActionBar anymore. -->
     <item name="windowActionBar">false</item>
@@ -16,6 +20,10 @@
 
     <item name="colorControlHighlight">@color/dialer_ripple_color</item>
     <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowLightNavigationBar">false</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
   </style>
 
   <style name="DialerActionBarBaseTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />

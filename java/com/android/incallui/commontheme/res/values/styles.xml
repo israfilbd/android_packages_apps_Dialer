@@ -19,18 +19,23 @@
 
   <style name="Dialer.Incall.TextAppearance" parent="android:TextAppearance.Material">
     <item name="android:textColor">?android:attr/textColorSecondary</item>
-    <item name="android:textSize">18sp</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:fontVariationSettings">\'wght\' 450, \'wdth\' 100</item>
   </style>
 
   <style name="Dialer.Incall.TextAppearance.Large">
     <item name="android:textColor">?android:attr/textColorPrimary</item>
-    <item name="android:textSize">36sp</item>
-    <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    <item name="android:textSize">34sp</item>
+    <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    <item name="android:fontVariationSettings">\'wght\' 700, \'wdth\' 100</item>
   </style>
 
   <style name="Dialer.Incall.TextAppearance.Label">
     <item name="android:textColor">?android:attr/textColorPrimary</item>
     <item name="android:textSize">12sp</item>
+    <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    <item name="android:fontVariationSettings">\'wght\' 500, \'wdth\' 100</item>
   </style>
 
   <style name="BottomRowIcon">
@@ -43,10 +48,10 @@
 
   <style name="Incall.Button.End" parent="android:Widget.Material.Button">
     <item name="android:background">@drawable/incall_end_call_background</item>
-    <item name="android:elevation">8dp</item>
-    <item name="android:layout_height">@dimen/incall_end_call_button_size</item>
-    <item name="android:layout_width">@dimen/incall_end_call_button_size</item>
-    <item name="android:padding">8dp</item>
+    <item name="android:elevation">0dp</item>
+    <item name="android:layout_height">56dp</item>
+    <item name="android:layout_width">104dp</item>
+    <item name="android:padding">12dp</item>
     <item name="android:src">@drawable/quantum_ic_call_end_vd_theme_36</item>
     <item name="android:tint">@color/incall_end_call_icon_color</item>
     <item name="android:stateListAnimator">@animator/disabled_alpha</item>

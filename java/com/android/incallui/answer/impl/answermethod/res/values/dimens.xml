@@ -18,10 +18,10 @@
 <resources>
   <dimen name="answer_contact_puck_size_photo">88dp</dimen>
   <dimen name="answer_contact_puck_size_no_photo">72dp</dimen>
-  <dimen name="two_button_button_size">48dp</dimen>
+  <dimen name="two_button_button_size">56dp</dimen>
   <dimen name="two_button_label_size">12sp</dimen>
   <dimen name="two_button_label_padding">8dp</dimen>
-  <dimen name="two_button_bottom_padding">24dp</dimen>
+  <dimen name="two_button_bottom_padding">40dp</dimen>
   <dimen name="answer_swipe_dead_zone_sides">50dp</dimen>
   <dimen name="answer_swipe_dead_zone_top">150dp</dimen>
 </resources>

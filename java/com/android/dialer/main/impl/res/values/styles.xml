@@ -16,26 +16,33 @@
   -->
 <resources>
 
-  <style name="LaunchTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+  <style name="LaunchTheme" parent="Theme.Material3.DayNight.NoActionBar">
     <item name="android:colorPrimary">@color/dialer_primary_color</item>
     <item name="colorPrimary">@color/dialer_primary_color</item>
     <item name="android:colorPrimaryDark">@color/dialer_theme_color_dark</item>
     <item name="colorPrimaryDark">@color/dialer_theme_color_dark</item>
     <item name="android:windowLightStatusBar">true</item>
+    <item name="android:windowLightNavigationBar">true</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
   </style>
 
   <!-- Activities should use this theme as their style -->
   <style name="MainActivityTheme" parent="MainActivityThemeBase">
     <!-- Used to change the navigation bar color -->
+    <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowLightNavigationBar">true</item>
-    <item name="android:navigationBarColor">@color/rounded_dialpad_bg_color</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
     <item name="android:navigationBarDividerColor">@null</item>
   </style>
 
   <style name="MainActivityTheme.Dark" parent="MainActivityThemeBase.Dark">
     <!-- Used to change the navigation bar color -->
+    <item name="android:windowLightStatusBar">false</item>
     <item name="android:windowLightNavigationBar">false</item>
-    <item name="android:navigationBarColor">@color/rounded_dialpad_bg_color</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
     <item name="android:navigationBarDividerColor">@null</item>
   </style>
 
@@ -46,8 +53,6 @@
     <item name="actionModeStyle">@style/MainActionModeStyle</item>
     <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.ActionBar</item>
     <item name="dialpad_style">@style/Dialpad.Themed</item>
-    <item name="android:colorPrimaryDark">@color/dialer_theme_color_dark</item>
-    <item name="colorPrimaryDark">@color/dialer_theme_color_dark</item>
   </style>
 
   <style name="MainActivityThemeBase.Dark" parent="Dialer.Dark.ThemeBase.NoActionBar">
@@ -60,7 +65,7 @@
 
   <!-- Colors our actionbar in action mode to dialer theme color. -->
   <style name="MainActionModeStyle" parent="@style/Widget.AppCompat.ActionMode">
-    <item name="background">?android:attr/colorPrimary</item>
+    <item name="background">?attr/colorPrimary</item>
     <item name="titleTextStyle">@style/ActionModeTitleTextStyle</item>
   </style>
 

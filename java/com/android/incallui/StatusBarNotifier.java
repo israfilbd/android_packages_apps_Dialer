@@ -311,10 +311,15 @@ public class StatusBarNotifier
       largeIcon = getRoundedIcon(largeIcon);
     }
 
+    final String channelId =
+        (notificationType == NOTIFICATION_INCOMING_CALL)
+            ? NotificationChannelId.INCOMING_CALL
+            : NotificationChannelId.ONGOING_CALL;
+
     // This builder is used for the notification shown when the device is locked and the user
     // has set their notification settings to 'hide sensitive content'
     // {@see Notification.Builder#setPublicVersion}.
-    Notification.Builder publicBuilder = new Notification.Builder(context);
+    Notification.Builder publicBuilder = new Notification.Builder(context, channelId);
     publicBuilder
         .setSmallIcon(iconResId)
         .setColor(ThemeComponent.get(context).theme().getColorCallNotificationBackground())
@@ -324,7 +329,7 @@ public class StatusBarNotifier
 
     // Builder for the notification shown when the device is unlocked or the user has set their
     // notification settings to 'show all notification content'.
-    final Notification.Builder builder = getNotificationBuilder();
+    final Notification.Builder builder = getNotificationBuilder(channelId);
     builder.setPublicVersion(publicBuilder.build());
 
     // Set up the main intent to send the user to the in-call screen
@@ -333,7 +338,6 @@ public class StatusBarNotifier
     LogUtil.i("StatusBarNotifier.buildAndSendNotification", "notificationType=" + notificationType);
     switch (notificationType) {
       case NOTIFICATION_INCOMING_CALL:
-        builder.setChannelId(NotificationChannelId.INCOMING_CALL);
         // Set the intent as a full screen intent as well if a call is incoming
         configureFullScreenIntent(builder, createLaunchPendingIntent(true /* isFullScreen */));
         // Set the notification category and bump the priority for incoming calls
@@ -348,12 +352,10 @@ public class StatusBarNotifier
         }
         break;
       case NOTIFICATION_INCOMING_CALL_QUIET:
-        builder.setChannelId(NotificationChannelId.ONGOING_CALL);
         break;
       case NOTIFICATION_IN_CALL:
         publicBuilder.setColorized(true);
         builder.setColorized(true);
-        builder.setChannelId(NotificationChannelId.ONGOING_CALL);
         break;
       default:
         break;
@@ -912,8 +914,8 @@ public class StatusBarNotifier
     builder.setFullScreenIntent(intent, true);
   }
 
-  private Notification.Builder getNotificationBuilder() {
-    final Notification.Builder builder = new Notification.Builder(context);
+  private Notification.Builder getNotificationBuilder(String channelId) {
+    final Notification.Builder builder = new Notification.Builder(context, channelId);
     builder.setOngoing(true);
     builder.setOnlyAlertOnce(true);
     // This will be ignored on O+ and handled by the channel
