@@ -371,8 +371,8 @@ public class StatusBarNotifier
         break;
       case NOTIFICATION_IN_CALL:
         publicBuilder.setColorized(true);
-        builder.setColorized(true);
         builder.setChannelId(NotificationChannelId.ONGOING_CALL);
+        builder.setRequestPromotedOngoing(true);
         break;
       default:
         break;
