@@ -131,6 +131,12 @@ public class DialerSettingsActivity extends BaseActivity implements
         getPreferenceScreen().addPreference(displayOptions);
       }
 
+      CardPreference soundSettings = new CardPreference(getContext());
+      soundSettings.setTitle(R.string.sounds_and_vibration_title);
+      soundSettings.setFragment(SoundSettingsFragment.class.getName());
+      soundSettings.setViewId(R.id.settings_header_sounds_and_vibration);
+      soundSettings.setIconSpaceReserved(false);
+      getPreferenceScreen().addPreference(soundSettings);
 
       CardPreference quickResponseSettings = new CardPreference(getContext());
       Intent quickResponseSettingsIntent =
